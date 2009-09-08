@@ -117,17 +117,16 @@ public class JNPServer
       // Shutdown the registry if this service created it
       if (shutdownRegistry == true)
       {
-         log.log(LogService.LOG_DEBUG, "Shutdown RMI registry");
          try
          {
+            log.log(LogService.LOG_DEBUG, "Shutdown RMI registry");
             UnicastRemoteObject.unexportObject(rmiRegistry, true);
          }
          catch (NoSuchObjectException ex)
          {
-            log.log(LogService.LOG_WARNING, "Cannot shotdown RMI registry", ex);
+            log.log(LogService.LOG_WARNING, "Cannot shutdown RMI registry", ex);
          }
       }
-
    }
 
    private NamingBean getNamingBean()

@@ -55,6 +55,7 @@ public class InitialContextFactory implements ServiceFactory
       ClassLoader ctxLoader = Thread.currentThread().getContextClassLoader();
       try
       {
+         // [TODO] use the calling bundle's class loader
          Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
          
          Hashtable env = new Hashtable();
