@@ -49,16 +49,33 @@ public class InitialContextFactory implements ServiceFactory
       this.jndiPort = jndiPort;
    }
 
-   @SuppressWarnings("unchecked")
    public Object getService(Bundle bundle, ServiceRegistration registration)
+   {
+      try
+      {
+         return getInitialContext(bundle);
+      }
+      catch (NamingException ex)
+      {
+         throw new IllegalStateException("Cannot get the InitialContext", ex);
+      }
+   }
+
+   public void ungetService(Bundle bundle, ServiceRegistration registration, Object service)
+   {
+      // nothing to do
+   }
+
+   InitialContext getInitialContext(Bundle bundle) throws NamingException
    {
       ClassLoader ctxLoader = Thread.currentThread().getContextClassLoader();
       try
       {
-         // [TODO] use the calling bundle's class loader
+         //Thread.currentThread().setContextClassLoader(BundleClassLoader.createClassLoader(bundle));
+         
          Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
          
-         Hashtable env = new Hashtable();
+         Hashtable<String, String> env = new Hashtable<String, String>();
          env.put("java.naming.factory.initial", NamingContextFactory.class.getName());
          env.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
          env.put("java.naming.provider.url", "jnp://" + jndiHost + ":" + jndiPort);
@@ -66,18 +83,9 @@ public class InitialContextFactory implements ServiceFactory
          InitialContext iniCtx = new InitialContext(env);
          return iniCtx;
       }
-      catch (NamingException ex)
-      {
-         throw new IllegalStateException("Cannot get the InitialContext", ex);
-      }
       finally
       {
          Thread.currentThread().setContextClassLoader(ctxLoader);
       }
-   }
-
-   public void ungetService(Bundle bundle, ServiceRegistration registration, Object service)
-   {
-      // nothing to do
    }
 }

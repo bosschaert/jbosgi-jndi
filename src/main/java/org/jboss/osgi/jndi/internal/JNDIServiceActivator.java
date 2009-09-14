@@ -27,13 +27,14 @@ import static org.jboss.osgi.jndi.Constants.REMOTE_JNDI_HOST;
 import static org.jboss.osgi.jndi.Constants.REMOTE_JNDI_PORT;
 import static org.jboss.osgi.jndi.Constants.REMOTE_JNDI_RMI_PORT;
 
+import java.io.IOException;
+import java.net.Socket;
+
 import javax.naming.InitialContext;
 
-import org.jboss.osgi.common.log.LogServiceTracker;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
-import org.osgi.service.log.LogService;
 
 /**
  * A BundleActivator for the JNDI related services
@@ -45,12 +46,9 @@ public class JNDIServiceActivator implements BundleActivator
 {
    private ServiceRegistration registration;
    private JNPServer jnpServer;
-   private LogService log;
 
    public void start(BundleContext context)
    {
-      log = new LogServiceTracker(context);
-      
       String jndiHost = context.getProperty(REMOTE_JNDI_HOST);
       if (jndiHost == null)
          jndiHost = "localhost";
@@ -63,12 +61,20 @@ public class JNDIServiceActivator implements BundleActivator
       if (jndiPort == null)
          jndiPort = "1099";
 
-      jnpServer = new JNPServer(context, jndiHost, Integer.parseInt(jndiPort), Integer.parseInt(jndiRmiPort));
-      jnpServer.start();
+      try
+      {
+         // Assume that the JNPServer is already running if we can connect to it 
+         Socket socket = new Socket(jndiHost, Integer.parseInt(jndiPort));
+         socket.close();
+      }
+      catch (IOException ex)
+      {
+         jnpServer = new JNPServer(context, jndiHost, Integer.parseInt(jndiPort), Integer.parseInt(jndiRmiPort));
+         jnpServer.start();
+      }
       
       InitialContextFactory serviceFactory = new InitialContextFactory(jndiHost, jndiPort);
       registration = context.registerService(InitialContext.class.getName(), serviceFactory, null);
-      log.log(LogService.LOG_DEBUG, "InitialContext registered");
    }
 
    public void stop(BundleContext context)

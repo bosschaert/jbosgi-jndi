@@ -88,6 +88,7 @@
               org.jboss.net.sockets, 
               org.jboss.osgi.common.log;version="1.0",
               org.jboss.osgi.spi.capability;version="1.0",
+              org.jboss.osgi.spi.util;version="1.0",
               org.jboss.util.naming, 
               org.jboss.util.threadpool, 
               org.osgi.framework, 
