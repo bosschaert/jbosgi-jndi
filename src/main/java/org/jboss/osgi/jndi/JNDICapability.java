@@ -26,6 +26,7 @@ package org.jboss.osgi.jndi;
 import javax.naming.InitialContext;
 
 import org.jboss.osgi.spi.capability.Capability;
+import org.jboss.osgi.spi.capability.LogServiceCapability;
 import org.jboss.osgi.spi.testing.OSGiRuntime;
 
 /**
@@ -57,6 +58,8 @@ public class JNDICapability extends Capability
       addSystemProperty("org.jboss.osgi.jndi.host", System.getProperty("jboss.bind.address", "localhost"));
       addSystemProperty("org.jboss.osgi.jndi.rmi.port", "1198");
       addSystemProperty("org.jboss.osgi.jndi.port", "1199");
+      
+      addDependency(new LogServiceCapability());
       
       addBundle("bundles/jboss-osgi-common-core.jar");
       addBundle("bundles/jboss-osgi-jndi.jar");
