@@ -91,6 +91,7 @@
               org.jboss.osgi.spi.util;version="1.0",
               org.jboss.util.naming, 
               org.jboss.util.threadpool, 
+              org.jnp.interfaces,
               org.osgi.framework, 
               org.osgi.service.log,
             </Import-Package>
