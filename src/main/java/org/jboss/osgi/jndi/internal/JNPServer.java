@@ -33,13 +33,13 @@ import java.rmi.server.UnicastRemoteObject;
 import javax.naming.NamingException;
 
 import org.jboss.net.sockets.DefaultSocketFactory;
-import org.jboss.osgi.common.log.LogServiceTracker;
 import org.jnp.interfaces.Naming;
 import org.jnp.server.Main;
 import org.jnp.server.NamingBean;
 import org.jnp.server.NamingServer;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.log.LogService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Start/Stop the {@link NamingServer}
@@ -49,7 +49,9 @@ import org.osgi.service.log.LogService;
  */
 public class JNPServer
 {
-   private LogService log;
+   // Provide logging
+   final Logger log = LoggerFactory.getLogger(JNPServer.class);
+   
    private String host;
    private int jndiPort;
    private int rmiPort;
@@ -62,7 +64,6 @@ public class JNPServer
 
    public JNPServer(BundleContext context, String host, int jndiPort, int rmiPort)
    {
-      this.log = new LogServiceTracker(context);
       this.host = host;
       this.jndiPort = jndiPort;
       this.rmiPort = rmiPort;
@@ -77,11 +78,11 @@ public class JNPServer
          try
          {
             rmiRegistry.list();
-            log.log(LogService.LOG_DEBUG, "RMI registry running at host=" + host + ",port=" + rmiPort);
+            log.debug("RMI registry running at host=" + host + ",port=" + rmiPort);
          }
          catch (RemoteException e)
          {
-            log.log(LogService.LOG_DEBUG, "No RMI registry running at host=" + host + ",port=" + rmiPort + ".  Will create one.");
+            log.debug("No RMI registry running at host=" + host + ",port=" + rmiPort + ".  Will create one.");
             rmiRegistry = LocateRegistry.createRegistry(rmiPort, null, new DefaultSocketFactory(InetAddress.getByName(host)));
             shutdownRegistry = true;
          }
@@ -96,11 +97,11 @@ public class JNPServer
          namingMain.setRmiPort(rmiPort);
 
          namingMain.start();
-         log.log(LogService.LOG_INFO, "JNDI started: JNP=" + host + ":" + jndiPort + ", RMI=" + host + ":" + rmiPort);
+         log.info("JNDI started: JNP=" + host + ":" + jndiPort + ", RMI=" + host + ":" + rmiPort);
       }
       catch (Exception ex)
       {
-         log.log(LogService.LOG_ERROR, "Cannot start Naming server", ex);
+         log.error("Cannot start Naming server", ex);
       }
    }
 
@@ -111,7 +112,7 @@ public class JNPServer
          namingMain.stop();
          namingMain = null;
          namingServer = null;
-         log.log(LogService.LOG_DEBUG, "Naming server stopped");
+         log.debug("Naming server stopped");
       }
       
       // Shutdown the registry if this service created it
@@ -119,12 +120,12 @@ public class JNPServer
       {
          try
          {
-            log.log(LogService.LOG_DEBUG, "Shutdown RMI registry");
+            log.debug("Shutdown RMI registry");
             UnicastRemoteObject.unexportObject(rmiRegistry, true);
          }
          catch (NoSuchObjectException ex)
          {
-            log.log(LogService.LOG_WARNING, "Cannot shutdown RMI registry", ex);
+            log.warn("Cannot shutdown RMI registry", ex);
          }
       }
    }

@@ -27,25 +27,26 @@
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
   </parent>
 
   <!-- Properties -->
   <properties>
     <version.jboss.naming>5.0.1.GA</version.jboss.naming>
-    <version.jboss.osgi.common>1.0.1</version.jboss.osgi.common>
-    <version.osgi>r4v42</version.osgi>
+    <version.jboss.osgi.common>1.0.4-SNAPSHOT</version.jboss.osgi.common>
+    <version.osgi>4.2.0</version.osgi>
   </properties>
 
   <!-- Dependencies -->
   <dependencies>
+    
+    <!-- Provided Dependencies -->
     <dependency>
       <groupId>org.jboss.osgi.bundles</groupId>
       <artifactId>jboss-osgi-common</artifactId>
       <version>${version.jboss.osgi.common}</version>
+      <scope>provided</scope>
     </dependency>
-    
-    <!-- Provided Dependencies -->
     <dependency>
       <groupId>org.jboss.naming</groupId>
       <artifactId>jnpserver</artifactId>
@@ -84,9 +85,10 @@
             <Import-Package>
               javax.naming*, 
               javax.net, 
+              org.slf4j,
               org.jboss.logging, 
               org.jboss.net.sockets, 
-              org.jboss.osgi.common.log;version="1.0",
+              org.jboss.osgi.common.log;version=1.0,
               org.jboss.osgi.spi.capability;version="1.0",
               org.jboss.osgi.spi.util;version="1.0",
               org.jboss.util.naming, 
@@ -99,7 +101,7 @@
               jnpserver;inline=false,
             </Embed-Dependency>
             <_exportcontents>
-              org.jnp.interfaces;version=${version.jboss.naming},
+              org.jnp.interfaces;version=5.0.1,
             </_exportcontents>
           </instructions>
         </configuration>
