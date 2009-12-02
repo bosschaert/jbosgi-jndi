@@ -33,7 +33,7 @@
   <!-- Properties -->
   <properties>
     <version.jboss.naming>5.0.1.GA</version.jboss.naming>
-    <version.jboss.osgi.common>1.0.4-SNAPSHOT</version.jboss.osgi.common>
+    <version.jboss.osgi.common>1.0.3-SNAPSHOT</version.jboss.osgi.common>
     <version.osgi>4.2.0</version.osgi>
   </properties>
 
