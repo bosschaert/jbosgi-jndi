@@ -32,14 +32,13 @@ import java.rmi.server.UnicastRemoteObject;
 
 import javax.naming.NamingException;
 
+import org.jboss.logging.Logger;
 import org.jboss.net.sockets.DefaultSocketFactory;
 import org.jnp.interfaces.Naming;
 import org.jnp.server.Main;
 import org.jnp.server.NamingBean;
 import org.jnp.server.NamingServer;
 import org.osgi.framework.BundleContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Start/Stop the {@link NamingServer}
@@ -50,7 +49,7 @@ import org.slf4j.LoggerFactory;
 public class JNPServer
 {
    // Provide logging
-   final Logger log = LoggerFactory.getLogger(JNPServer.class);
+   private static final Logger log = Logger.getLogger(JNPServer.class);
    
    private String host;
    private int jndiPort;

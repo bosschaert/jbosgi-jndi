@@ -27,18 +27,24 @@
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
   </parent>
 
   <!-- Properties -->
   <properties>
     <version.jboss.naming>5.0.1.GA</version.jboss.naming>
     <version.jboss.osgi.common>1.0.3</version.jboss.osgi.common>
+    <version.jboss.osgi.spi>1.0.5-SNAPSHOT</version.jboss.osgi.spi>
     <version.osgi>4.2.0</version.osgi>
   </properties>
 
   <!-- Dependencies -->
   <dependencies>
+    <dependency>
+      <groupId>org.jboss.osgi</groupId>
+      <artifactId>jboss-osgi-spi</artifactId>
+      <version>${version.jboss.osgi.spi}</version>
+    </dependency>
     
     <!-- Provided Dependencies -->
     <dependency>
@@ -85,7 +91,6 @@
             <Import-Package>
               javax.naming*, 
               javax.net, 
-              org.slf4j,
               org.jboss.logging, 
               org.jboss.net.sockets, 
               org.jboss.osgi.common.log;version=1.0,
