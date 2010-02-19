@@ -25,12 +25,10 @@ package org.jboss.osgi.jndi;
 
 import javax.naming.InitialContext;
 
-import org.jboss.osgi.common.log.LoggingCapability;
 import org.jboss.osgi.spi.capability.Capability;
 
 /**
- * Adds the JNDI capability to the {@link OSGiRuntime}
- * under test. 
+ * Adds the JNDI capability to the OSGiRuntime under test. 
  * 
  * It is ignored if the {@link InitialContext} is already registered.
  * 
@@ -57,8 +55,6 @@ public class JNDICapability extends Capability
       addSystemProperty("org.jboss.osgi.jndi.host", System.getProperty("jboss.bind.address", "localhost"));
       addSystemProperty("org.jboss.osgi.jndi.rmi.port", "1198");
       addSystemProperty("org.jboss.osgi.jndi.port", "1199");
-      
-      addDependency(new LoggingCapability());
       
       addBundle("bundles/jboss-osgi-common-core.jar");
       addBundle("bundles/jboss-osgi-jndi.jar");
