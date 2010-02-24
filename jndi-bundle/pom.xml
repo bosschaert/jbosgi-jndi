@@ -36,15 +36,8 @@
       <version>${version}</version>
     </dependency>
     <dependency>
-      <groupId>org.jboss.osgi.bundles</groupId>
-      <artifactId>jboss-osgi-common</artifactId>
-    </dependency>
-    
-    <!-- Provided Dependencies -->
-    <dependency>
       <groupId>org.jboss.naming</groupId>
       <artifactId>jnpserver</artifactId>
-      <scope>provided</scope>
     </dependency>
     
     <!-- OSGi Dependencies -->    
