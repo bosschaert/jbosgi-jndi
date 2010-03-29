@@ -21,20 +21,20 @@
   <artifactId>jboss-osgi-jndi-parent</artifactId>
   <packaging>pom</packaging>
 
-  <version>1.0.3-SNAPSHOT</version>
+  <version>1.0.3</version>
   
   <!-- Parent -->
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.5</version>
   </parent>
 
   <!-- Subversion -->
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/trunk</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/trunk</developerConnection>
-    <url>http://fisheye.jboss.com/qsearch/JBossOSGi/projects/bundles/jndi/trunk</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/tags/jboss-osgi-jndi-parent-1.0.3</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/tags/jboss-osgi-jndi-parent-1.0.3</developerConnection>
+    <url>http://fisheye.jboss.com/qsearch/JBossOSGi/projects/bundles/jndi/tags/jboss-osgi-jndi-parent-1.0.3</url>
   </scm>
   
   <!-- Modules -->
@@ -47,7 +47,7 @@
   <properties>
     <version.jboss.naming>5.0.1.GA</version.jboss.naming>
     <version.jboss.osgi.common>1.0.3</version.jboss.osgi.common>
-    <version.jboss.osgi.spi>1.0.5-SNAPSHOT</version.jboss.osgi.spi>
+    <version.jboss.osgi.spi>1.0.5</version.jboss.osgi.spi>
     <version.osgi>4.2.0</version.osgi>
   </properties>
 
