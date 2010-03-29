@@ -21,7 +21,7 @@
   <artifactId>jboss-osgi-jndi-parent</artifactId>
   <packaging>pom</packaging>
 
-  <version>1.0.3</version>
+  <version>1.0.4-SNAPSHOT</version>
   
   <!-- Parent -->
   <parent>
@@ -32,9 +32,9 @@
 
   <!-- Subversion -->
   <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/tags/jboss-osgi-jndi-parent-1.0.3</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/tags/jboss-osgi-jndi-parent-1.0.3</developerConnection>
-    <url>http://fisheye.jboss.com/qsearch/JBossOSGi/projects/bundles/jndi/tags/jboss-osgi-jndi-parent-1.0.3</url>
+    <connection>scm:svn:http://anonsvn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/trunk</connection>
+    <developerConnection>scm:svn:https://svn.jboss.org/repos/jbossas/projects/jboss-osgi/projects/bundles/jndi/trunk</developerConnection>
+    <url>http://fisheye.jboss.com/qsearch/JBossOSGi/projects/bundles/jndi/trunk</url>
   </scm>
   
   <!-- Modules -->
