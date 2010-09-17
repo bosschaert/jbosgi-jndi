@@ -70,7 +70,7 @@
               javax.net,
                
               <!-- jboss --> 
-              org.jboss.logging;version="[2.1,3.0)", 
+              org.jboss.logging;version="[3.0,4.0)", 
               org.jboss.net.sockets;version="[2.2,3.0)", 
               org.jboss.util.naming;version="[2.2,3.0)", 
               org.jboss.util.threadpool;version="[2.2,3.0)",

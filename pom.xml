@@ -27,7 +27,7 @@
   <parent>
     <groupId>org.jboss.osgi</groupId>
     <artifactId>jboss-osgi-parent</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.9</version>
   </parent>
 
   <!-- Subversion -->
@@ -46,8 +46,8 @@
   <!-- Properties -->
   <properties>
     <version.jboss.naming>5.0.1.GA</version.jboss.naming>
-    <version.jboss.osgi.common>1.0.3</version.jboss.osgi.common>
-    <version.jboss.osgi.spi>1.0.5</version.jboss.osgi.spi>
+    <version.jboss.osgi.common>1.0.6</version.jboss.osgi.common>
+    <version.jboss.osgi.spi>1.0.14</version.jboss.osgi.spi>
     <version.osgi>4.2.0</version.osgi>
   </properties>
 
@@ -69,6 +69,12 @@
       <dependency>
         <groupId>org.jboss.naming</groupId>
         <artifactId>jnpserver</artifactId>
+        <exclusions>
+          <exclusion>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-spi</artifactId>
+          </exclusion>
+        </exclusions>
         <version>${version.jboss.naming}</version>
       </dependency>
       
