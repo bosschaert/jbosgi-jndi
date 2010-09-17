@@ -25,7 +25,7 @@
   <parent>
     <groupId>org.jboss.osgi.jndi</groupId>
     <artifactId>jboss-osgi-jndi-parent</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.4-SNAPSHOT</version>
   </parent>
 
   <!-- Dependencies -->
